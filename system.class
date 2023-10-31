@@ -1,0 +1,32 @@
+system.stdout.printValue(){
+    echo $($@)
+}
+
+system.stdout.printString(){
+    echo $@
+}
+
+system.stdout.printObject(){
+    OBJFILE="./$( $1.fileName )"
+    POSX="$( $1.posx )"
+    POSY="$( $1.posy )"
+    
+    clear
+    # printf "\033[1;37;41m"
+    printf "\033[0;31m"
+    
+    local y=$POSY
+    for line in $(cat $OBJFILE)
+    do
+      ((y++))
+      x=0
+      for xy in "${(@s/;/)line}"
+      do
+        if [[ $xy -ne " " ]]
+        then
+          printf "\033["$y";"$(( ${${(s/,/)xy}[1]} + $POSX ))"H"
+          printf '%0.1s' "+"{1.."${${(s/,/)xy}[2]}"}
+        fi
+      done
+    done
+}
