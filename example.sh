@@ -4,13 +4,13 @@ declare -A cowboy_properties
 source obj.h
 source system.h
 
-
 # create class object cowboy
 obj cowboy
 
 cowboy.fileName = "cowboy.data"
 cowboy.posx = "10"
 cowboy.posy = "0"
+cowboy.char = "G"
 
 system.stdout.printObject cowboy
 

@@ -57,3 +57,12 @@ obj.posy(){
         obj.property posy
     fi
 }
+
+obj.char(){
+    if [[ "$1" == "=" ]]
+    then
+        obj.property char = "$2"
+    else
+        obj.property char
+    fi
+}
